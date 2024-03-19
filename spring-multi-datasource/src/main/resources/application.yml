@@ -5,4 +5,16 @@ spring:
       jdbc-url: jdbc:h2:~/test
       username: sa
       password:
-
+  datasource-second:
+    hikari:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:~/test
+      username: sa2
+      password: 1234
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      format_sql: true
+      # ddl-auto: none
+    defer-datasource-initialization: false
