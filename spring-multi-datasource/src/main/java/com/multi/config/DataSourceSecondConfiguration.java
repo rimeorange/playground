@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories(
-        basePackages = "com.multi.test2",
+        basePackages = "com.multi.member",
         entityManagerFactoryRef = "secondDatabaseEntityManagerFactory",
         transactionManagerRef = "secondTransactionManager"
 )
@@ -28,7 +28,7 @@ public class DataSourceSecondConfiguration {
     public LocalContainerEntityManagerFactoryBean secondDatabaseEntityManagerFactory(DataSourcSecondProperties dataSourcSecondProperties) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSecondSource(dataSourcSecondProperties ));
-        em.setPackagesToScan("com.multi.test2");
+        em.setPackagesToScan("com.multi.member");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         return em;
     }
