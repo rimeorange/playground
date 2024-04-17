@@ -32,7 +32,7 @@ public class DataSourceConfiguration {
     public LocalContainerEntityManagerFactoryBean firstDatabaseEntityManagerFactory(DataSourceProperties dataSourceProperties) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource(dataSourceProperties ));
-        em.setPackagesToScan("org.multi.product");
+        em.setPackagesToScan("com.multi.product");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         return em;
     }
