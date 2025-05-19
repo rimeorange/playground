@@ -1,10 +1,10 @@
-package com.multi.product.entity;
+package com.multi.member.entity;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "product")
-public class Product {
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,10 +12,10 @@ public class Product {
     private Long id;
 
     @Column(name = "barcode")
-    private String barcode;
+    private String name;
 
     @Column(name = "productName")
-    private String productName;
+    private String birthday;
 
 
 }

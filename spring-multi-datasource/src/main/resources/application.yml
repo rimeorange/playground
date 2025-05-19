@@ -1,3 +1,57 @@
 spring:
-  profiles:
-    active: local
+  # Main DataSource (MySQL)
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: ENC(jdbc:mysql://localhost:3308/sampledb)
+      username: ENC(mysql_user)
+      password: ENC(mysql_password)
+      connection-timeout: 5000
+      validation-timeout: 3000
+      minimum-idle: 10
+      max-lifetime: 1800000
+      maximum-pool-size: 15
+
+  # Second DataSource (Oracle)
+  datasource-second:
+    hikari:
+      driver-class-name: oracle.jdbc.OracleDriver
+      jdbc-url: ENC(jdbc:oracle:thin:@//localhost:1521/XEPDB1)
+      username: ENC(oracle_user)
+      password: ENC(oracle_password)
+
+  # SSH Tunnel 설정
+  ssh:
+    tunnel:
+      ssh-host: bastion.example.com
+      ssh-port: 22
+      ssh-username: devuser
+      ssh-password: your-secure-password
+      local-port: 3308
+      remote-host: 10.0.0.101
+      remote-port: 3306
+    tunnel-second:
+      ssh-host: bastion.example.com
+      ssh-port: 22
+      ssh-username: devuser
+      ssh-password: your-secure-password
+      local-port: 3307
+      remote-host: 10.0.0.102
+      remote-port: 3306
+
+  # JPA 기본 설정 (MySQL 기준)
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+      format_sql: true
+    defer-datasource-initialization: false
+    properties:
+      hibernate:
+        show_sql: true
+        jdbc.batch_size: 100
+        order_inserts: true
+        order_updates: true
+
+server:
+  port: 8080
